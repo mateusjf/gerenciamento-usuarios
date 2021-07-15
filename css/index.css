@@ -1,0 +1,155 @@
+:root{
+    
+
+    --itens: #26273b;
+    --cards-color: #aebbc4;
+}
+.user-description{
+    display: flex;
+    justify-content: space-between;
+}
+.description{
+
+}
+.path{
+
+}
+.path i{
+    margin: 0 7px;
+}
+
+.card{
+    background: var(--itens);
+    width: 80%;
+    height: 140px;
+    margin: 20px auto;
+    color: var(--cards-color);
+    padding: 0.9em;
+    border-radius: 5px;
+    sborder: 1px solid var(--text-menu-hover);
+    
+}
+.card .t{
+    background: #bfd85c;
+}
+.card > i{
+    color: svar(--text-menu-hover);
+    font-size: 3.8em;
+}
+
+.settings{
+    text-align: center;
+}
+.settings a{
+    text-decoration: none;
+    display: inline-block;
+    margin: 25px 25px;
+    color: var(--text-menu-hover);
+    padding-bottom: 2px;
+    border-bottom: 5px solid transparent;
+}
+.settings a:hover{
+    aborder-bottom: 3px solid var(--text-menu-hover);
+    aopacity: 0.5;
+}
+.user{
+    display: none;
+}
+.register{
+    display: ndone;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0.5em;
+    background: var(--text-menu-hover);
+    text-align: center;
+    width: calc(100% );
+    border-spacing: 0.5em;
+}
+
+th{
+    background: var(--text-menu-hover);
+    border-color: blue;
+}
+td, th{
+    width: 25%;
+    padding: 7px 4.2px;
+}
+tr{
+    background: var(--itens);
+    background: rsed;
+    margin: 10px 0;
+}
+
+
+div.img-tabela{
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    background: white;
+    margin: auto;
+    border-radius: 50%;
+}
+.img-tabela img{
+    height: 100%;
+    width: 100%;
+}
+.action-button{
+    background: transparent;
+    
+    outline: none;
+    border: none;
+    margin: 4px 0;
+    padding: 2px 3px;
+    border-radius: 3px;
+}
+.button-edit{
+    color: #5dccbb;
+}
+.button-delete{
+    color: #f94065;
+}
+
+fieldset{
+    display: nsone;
+    border: none;
+}
+legend{
+    display: none;
+}
+
+form{
+    border: 1px solid resd;;
+    padding: 10px;
+    margin: auto;
+    text-align: cee;
+    background: var(--itens);
+    border-top: 4px solid var(--text-menu-hover);
+    border-radius: 4px;
+}
+form .input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+form .input-group input{
+    margin: 5px 0;
+    padding: 7px 12px;
+    outline: none;
+    border: 2px solid var(--text-menu);
+    border-radius: 5px;
+}
+form .input-group input:focus{
+    border-color: var(--text-menu-hover);
+    sbox-shadow: var(--text-menu-hover) 0 0 25px;
+}
+.img-profile{
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--text-menu);
+    border-radius: 50%;
+    margin: auto;
+}
+#foto-description{
+    margin: 5px auto;
+}
