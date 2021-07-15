@@ -36,7 +36,7 @@ main, footer{
     padding: 0.5em;
 }
 footer{
-    backgrounds: red;
+    backgrounsd: #222433;
     z-index: 200;
     position: relative;
     bottom: 0;
@@ -104,4 +104,22 @@ i{
 .social-media a{
     display: inline-block;
     margin: 0 10px;
+    font-size: 2.3em;
+}
+#git i{
+    color: #fff;
+}
+footer p{
+    color: var(--text-menu-hover);
+}
+#linkedin i{
+    color: #0a66c2;
+}
+.project a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.0em;
+}
+.project a:hover{
+    color: var(--text-menu-hover)
 }

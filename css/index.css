@@ -43,20 +43,21 @@
 .settings a{
     text-decoration: none;
     display: inline-block;
-    margin: 25px 25px;
+    margin: 25px 15px;
     color: var(--text-menu-hover);
     padding-bottom: 2px;
     border-bottom: 5px solid transparent;
+    font-size: 1.3em;
 }
 .settings a:hover{
     aborder-bottom: 3px solid var(--text-menu-hover);
     aopacity: 0.5;
 }
 .user{
-    display: none;
+    display: dnone;
 }
 .register{
-    display: ndone;
+    display: none;
 }
 table{
     border-collapse: collapse;
@@ -96,12 +97,15 @@ div.img-tabela{
 }
 .action-button{
     background: transparent;
-    
+    cursor: pointer;
     outline: none;
     border: none;
     margin: 4px 0;
     padding: 2px 3px;
     border-radius: 3px;
+}
+.action-button:hover{
+    opacity: 0.5;
 }
 .button-edit{
     color: #5dccbb;
@@ -152,4 +156,8 @@ form .input-group input:focus{
 }
 #foto-description{
     margin: 5px auto;
+}
+.project a{
+    color: var(--cards-color);
+    font-size: 1.1em;
 }
