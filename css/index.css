@@ -20,13 +20,13 @@
 
 .card{
     background: var(--itens);
-    width: 80%;
+    width: 90%;
     height: 140px;
     margin: 20px auto;
     color: var(--cards-color);
     padding: 0.9em;
     border-radius: 5px;
-    sborder: 1px solid var(--text-menu-hover);
+    dborder: 1px solid var(--text-menu-hover);
     
 }
 .card .t{
@@ -48,16 +48,6 @@
     padding-bottom: 2px;
     border-bottom: 5px solid transparent;
     font-size: 1.3em;
-}
-.settings a:hover{
-    aborder-bottom: 3px solid var(--text-menu-hover);
-    aopacity: 0.5;
-}
-.user{
-    display: dnone;
-}
-.register{
-    display: none;
 }
 table{
     border-collapse: collapse;
@@ -145,7 +135,6 @@ form .input-group input{
 }
 form .input-group input:focus{
     border-color: var(--text-menu-hover);
-    sbox-shadow: var(--text-menu-hover) 0 0 25px;
 }
 .img-profile{
     width: 120px;
@@ -160,4 +149,53 @@ form .input-group input:focus{
 .project a{
     color: var(--cards-color);
     font-size: 1.1em;
+}
+@media screen and (min-width: 980px){
+    .settings{
+        display: none;
+    }
+    .all{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around
+    }
+    .user{
+        width: calc(100% - 390px);
+    }
+    .register{
+        width: 365px;
+    }
+
+    .register form {
+        width: 100%;
+    }
+
+    .cards{
+        display: flex;
+        justify-content: space-around;
+    }
+    .card{
+        width: 49%;
+    }
+}
+@media screen and (max-width: 980px){
+    .cards{
+        display: flex;
+        justify-content: space-around;
+    }
+    .card{
+        width: 49%;
+    }
+    .register{
+        display: nonse;
+    }
+}
+@media screen and (max-width: 580px){
+    .cards{
+        display: block;
+        
+    }
+    .card{
+        width: 100%;
+    }
 }

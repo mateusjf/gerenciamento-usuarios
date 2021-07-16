@@ -1,5 +1,4 @@
 :root{
-    --cor-principal: rgb(55, 91, 255);
     --cor-secundaria: #1b1c31;
 
     --primary-text-color: #fbfdfd;
@@ -26,7 +25,7 @@ header{
     position: fixed;
     text-align: center;
     height: 100%;
-    padding: 0.5em 0;
+    padding: 20px 0;
 }
 main{
     color: var(--primary-text-color);
@@ -36,7 +35,6 @@ main, footer{
     padding: 0.5em;
 }
 footer{
-    backgrounsd: #222433;
     z-index: 200;
     position: relative;
     bottom: 0;
@@ -49,20 +47,20 @@ footer nav{
     margin: auto;
     background: bluse;
 }
-.toggle{
-    padding: 0.4em 0;
-}
+
 #toggle-checkbox{
     display: none;
 }
-.toggle label{
+header label{
     font-size: 1.5em;
     color: var(--text-menu-hover);
 }
 .logo{
     display: none;
 }
-
+.logo-style{
+    color: var(--text-menu-hover);
+}
 
 span{
     display: none;
@@ -73,13 +71,14 @@ i{
 
 
 .navigation{
-    aborder-top: 1px solid rgba(197, 197, 197, 0.2);
     position: relative;
     left: 0;
     height: 100%;
+    margin-top: 50px;
     padding: 0.5em;
     text-align: center;
     width: 63px;
+ 
 }
 .navigation-list{
     list-style: none;
@@ -122,4 +121,42 @@ footer p{
 }
 .project a:hover{
     color: var(--text-menu-hover)
+}
+
+@media screen and (min-width: 750px){
+    #toggle-checkbox:checked ~ label{
+        position: relative;
+        left: 12px;
+        top: 0px;
+        margin-right: 20px;
+        display: inline-block;
+    }
+    #toggle-checkbox:checked ~ .logo{
+        display: inline-block;
+        position: relative;
+        left: 3px;
+        color: white;
+        background: greenyellsow;
+        font-size: 1.25em;
+    }
+    #toggle-checkbox:checked ~ .logo .logo-style{
+        display: inline;
+    }
+    #toggle-checkbox:checked ~ .navigation{
+        width: 170px;
+    }
+    #toggle-checkbox:checked ~ .navigation span{
+        display: inline;
+        font-size: 0.8em;
+    }
+    #toggle-checkbox:checked ~ .navigation a{
+        width: 80%;
+        margin-left: -5px;
+    }
+    
+}
+@media screen and (max-width: 750px){
+    header label{
+        display: none;
+    }
 }
