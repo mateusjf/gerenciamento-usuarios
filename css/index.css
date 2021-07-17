@@ -8,17 +8,21 @@
     display: flex;
     justify-content: space-between;
 }
-.description{
-
+.description p{
+    font-style: italic;
+    opacity: 0.6;
 }
 .path{
-
+    font-size: 1em;
+    position: relative;
+    left: -20px;
 }
 .path i{
-    margin: 0 7px;
+    margin-right: 7px;
 }
 
 .card{
+    
     background: var(--itens);
     width: 90%;
     height: 140px;
@@ -26,15 +30,24 @@
     color: var(--cards-color);
     padding: 0.9em;
     border-radius: 5px;
+    position: relative;
     dborder: 1px solid var(--text-menu-hover);
     
 }
-.card .t{
-    background: #bfd85c;
-}
 .card > i{
     color: svar(--text-menu-hover);
-    font-size: 3.8em;
+    font-size: 4.4em;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.card > p{
+    font-size: 1.9em;
+}
+.card > p span{
+    display: block;
+    margin-top: 10px;
+    margin-left: 40px;
 }
 
 .settings{
@@ -60,7 +73,6 @@ table{
 
 th{
     background: var(--text-menu-hover);
-    border-color: blue;
 }
 td, th{
     width: 25%;
