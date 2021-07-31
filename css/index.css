@@ -145,6 +145,13 @@ form .input-group input{
     border: 2px solid var(--text-menu);
     border-radius: 5px;
 }
+input[type=text], 
+input[type=email], 
+input[type=date], 
+input[type=password], 
+input[type=file]{
+    width: 100%;
+}
 form .input-group input:focus{
     border-color: var(--text-menu-hover);
 }
