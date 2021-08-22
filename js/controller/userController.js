@@ -1,7 +1,7 @@
 class UserController{
     constructor(){
         this.form = document.querySelector('form')
-        this.tabela = document.querySelector('table')
+        this.tabela = document.querySelector('table tbody')
         this.user = document.querySelector('.user')
         this.registro = document.querySelector('.register')
         this.btnsView = document.querySelectorAll('.settings a')
@@ -11,10 +11,10 @@ class UserController{
     }
 
     initEvents(){
+        
         this.form.addEventListener('submit', event => {
             event.preventDefault()
-
-
+            this.newRow(this.getData());
         })
 
         this.btnsView.forEach((btn, indice) => {
@@ -38,5 +38,63 @@ class UserController{
                 }
             })
         })
+    }
+
+    getData(){
+        console.log(this.form.elements);
+        let user = {};
+        [...this.form.elements].forEach(input => {
+            if (input.name === 'sexo'){
+                if (input.checked){
+                    user[input.name] = input.value
+                }
+            }else{
+                console.log(input.value)
+                user[input.id] = input.value
+
+                if (input.name === 'admin')
+                    user[input.id] = input.checked
+            }
+        })
+
+        //console.log(user)
+
+        return new User(
+            user.nome,
+            user.sexo,
+            user.data,
+            user.pais,
+            user.email,
+            user.senha,
+            user.foto,
+            user.admin
+        );
+    }
+
+    newRow(user){
+        console.log(user)
+        console.log(user.admin)
+        let row = `
+        <tr>
+        <td class="col-img">
+            <div class="img-tabela">
+                <img src="img/user.png" alt="">
+            </div>
+        </td>
+        <td>${user.nome}</td>
+        <td>${user.email}</td>
+        <td>${(user.admin) ? 'Sim' : 'Não'}</td>
+        <td>
+            <button class="action-button button-edit">
+                <i class="far fa-edit"></i>
+            </button>
+            <button class="action-button button-delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </td>
+    </tr>
+        `
+    console.log('asd')
+    this.tabela.innerHTML += row
     }
 }
