@@ -81,7 +81,7 @@
 
             <div class="view">
                 <div class="settings">
-                    <a href="#">
+                    <a href="#" class="selected">
                         <i class="fas fa-circle"></i>
                         Usuário
                     </a>
@@ -97,7 +97,7 @@
                         <table class="tabela">
                             <thead>
                                 <tr>
-                                    <th>Foto</th>
+                                    <th class="col-img">Foto</th>
                                     <th>Nome</th>
                                     <th>Email</th>
                                     <th>Admin</th>
@@ -107,7 +107,7 @@
                             
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td class="col-img">
                                         <div class="img-tabela">
                                             <img src="img/user.png" alt="">
                                         </div>
@@ -199,4 +199,8 @@
         </nav>
     </footer>
 </body>
+<script src="js/controller/userController.js"></script>
+<script>
+    new UserController()
+</script>
 </html>

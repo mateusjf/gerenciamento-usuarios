@@ -1,6 +1,4 @@
 :root{
-    
-
     --itens: #26273b;
     --cards-color: #aebbc4;
 }
@@ -30,9 +28,7 @@
     color: var(--cards-color);
     padding: 0.9em;
     border-radius: 5px;
-    position: relative;
-    dborder: 1px solid var(--text-menu-hover);
-    
+    position: relative; 
 }
 .card > i{
     color: svar(--text-menu-hover);
@@ -181,9 +177,11 @@ form .input-group input:focus{
     }
     .user{
         width: calc(100% - 390px);
+        display: initial !important;
     }
     .register{
         width: 365px;
+        display: initial !important;
     }
 
     .register form {
@@ -207,15 +205,22 @@ form .input-group input:focus{
         width: 49%;
     }
     .register{
-        display: nonse;
+        display: none;
     }
 }
 @media screen and (max-width: 580px){
     .cards{
         display: block;
-        
     }
     .card{
         width: 100%;
+    }
+    .col-img{
+        display: none;
+        width: 0;
+        overflow: hidden;
+    }
+    .img-tabela{
+        display: none;
     }
 }
