@@ -163,6 +163,9 @@ form .input-group input:focus{
 #foto-description{
     margin: 5px auto;
 }
+.required-field input{
+    border: 2px solid red !important;
+}
 .project a{
     color: var(--cards-color);
     font-size: 1.1em;

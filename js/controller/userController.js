@@ -6,6 +6,9 @@ class UserController{
         this.registro = document.querySelector('.register')
         this.btnsView = document.querySelectorAll('.settings a')
         this.iconsBtnView = document.querySelectorAll('.settings a i')
+        this.cards = document.querySelectorAll('.card');
+
+        console.log(this.cards)
 
         this.initEvents()
     }
@@ -14,18 +17,28 @@ class UserController{
         
         this.form.addEventListener('submit', event => {
             event.preventDefault()
+            const btn = this.form.querySelector('button')
+            
+
             const dados = this.getData()
             const elemento = [...this.form.elements].filter(item => {
-                if (item.id === 'foto')
-                    return item;
+            if (item.id === 'foto')
+                return item;
             });
 
             this.getPhoto(elemento[0].files[0]).then(result => {
-                dados.foto = result
-                this.newRow(dados)
+                if (this.formValidation()){
+                    btn.disabled = true
+                    this.form.reset()
+                    dados.foto = result
+                    this.newRow(dados)
+                    
+                    btn.disabled = false
+                }
             }).catch(e => {
                 console.log(e);
             });
+            
         })
 
         this.btnsView.forEach((btn, indice) => {
@@ -119,6 +132,34 @@ class UserController{
         </td>
     </tr>
         `
-    this.tabela.innerHTML += row
+        this.tabela.innerHTML += row
+        this.updateCards(user.admin)
+    }
+
+    formValidation(){
+        let ok = true
+        const REQUIRED = ['nome', 'data-nascimento', 'email', 'senha'];
+        [...this.form.elements].forEach(item => {
+            if (REQUIRED.indexOf(item.id) > -1){
+                if (!item.value){
+                    const parent = item.parentElement
+                    parent.classList.add('required-field');
+                    ok = false
+                }
+            }
+        })
+
+        return ok
+    }
+
+    updateCards(admin){
+        for(let i = 0; i < this.cards.length; i++){
+            let card = this.cards[i]
+            const content = card.querySelector('span')
+            let value = parseInt(content.textContent)
+            content.textContent = value + 1
+            if (!admin)
+                return
+        }
     }
 }
