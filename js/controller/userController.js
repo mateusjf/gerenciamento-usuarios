@@ -14,7 +14,18 @@ class UserController{
         
         this.form.addEventListener('submit', event => {
             event.preventDefault()
-            this.newRow(this.getData());
+            const dados = this.getData()
+            const elemento = [...this.form.elements].filter(item => {
+                if (item.id === 'foto')
+                    return item;
+            });
+
+            this.getPhoto(elemento[0].files[0]).then(result => {
+                dados.foto = result
+                this.newRow(dados)
+            }).catch(e => {
+                console.log(e);
+            });
         })
 
         this.btnsView.forEach((btn, indice) => {
@@ -41,7 +52,6 @@ class UserController{
     }
 
     getData(){
-        console.log(this.form.elements);
         let user = {};
         [...this.form.elements].forEach(input => {
             if (input.name === 'sexo'){
@@ -49,15 +59,12 @@ class UserController{
                     user[input.name] = input.value
                 }
             }else{
-                console.log(input.value)
                 user[input.id] = input.value
 
                 if (input.name === 'admin')
                     user[input.id] = input.checked
             }
         })
-
-        //console.log(user)
 
         return new User(
             user.nome,
@@ -71,14 +78,32 @@ class UserController{
         );
     }
 
+    getPhoto(file){
+        return new Promise((resolve, reject) => {
+            let fileReader = new FileReader()
+
+            fileReader.onload = () => {
+                resolve(fileReader.result)
+            }
+
+            fileReader.onerror = () => {
+                reject();
+            }
+
+            if (file)
+                fileReader.readAsDataURL(file)
+            else
+                resolve('img/user.png');    
+            
+        })
+    }
+
     newRow(user){
-        console.log(user)
-        console.log(user.admin)
         let row = `
         <tr>
         <td class="col-img">
             <div class="img-tabela">
-                <img src="img/user.png" alt="">
+                <img src="${user.foto}" alt="">
             </div>
         </td>
         <td>${user.nome}</td>
@@ -94,7 +119,6 @@ class UserController{
         </td>
     </tr>
         `
-    console.log('asd')
     this.tabela.innerHTML += row
     }
 }
