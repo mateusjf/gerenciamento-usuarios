@@ -142,7 +142,7 @@
                                     Sexo:
     
                                     <label for="sexo">
-                                        <input type="radio" value="masculino" name="sexo">
+                                        <input type="radio" value="masculino" name="sexo" checked>
                                         Masculino
                                     </label>
     
@@ -173,10 +173,10 @@
                                         <img src="" alt="">
                                     </div>
                                     <label for="foto" id="foto-description">Foto</label>
-                                    <input id="foto" type="file" id="senha">
+                                    <input id="foto" type="file">
                                 </div>
                                 Administrador <input type="checkbox" name="admin" id="admin"> 
-                                <button type="submit">Enviar</button>
+                                <button type="submit" id="btn-submit">Enviar</button>
                             </fieldset>
                         </form>
                     </div>
@@ -200,8 +200,7 @@
     </footer>
 </body>
 <script src="js/controller/userController.js"></script>
-<script src="js/user.js"></script>
-<script>
-    new UserController()
-</script>
+<script src="js/model/user.js"></script>
+<script src="js/view/view.js"></script>
+<script src="js/index.js"></script>
 </html>
