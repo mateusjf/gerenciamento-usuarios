@@ -56,6 +56,14 @@ class UserView{
         return ok
     }
 
+    toggleForm(){
+        //this.updateDisplay.classList.remove('update')
+        this.updateDisplay.classList.toggle('visible')
+        let registerDisplay = document.querySelector('.register');
+        //registerDisplay.classList.remove('register')
+        registerDisplay.classList.toggle('hide')
+    }
+
     adicionarLinha(dados){
         const tr = document.createElement('tr');
 
@@ -80,10 +88,12 @@ class UserView{
 
         tr.dataset.dataAtributos = JSON.stringify(dados)
 
-        const btnEdit = tr.querySelector('button-edit');
-        tr.addEventListener('click', () => {
-            this.updateDisplay.classList.remove('update')
-            this.registerDisplay.classList.add('hide')
+        const btnEdit = tr.querySelector('.button-edit')
+
+        btnEdit.addEventListener('click', () => {
+            btnEdit.disabled = true
+            btnEdit.style.opacity = 0.3
+            this.toggleForm()
         })
 
         this.tbody.appendChild(tr)

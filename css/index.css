@@ -192,13 +192,16 @@ form .input-group input:focus{
         width: 365px;
         display: initial !important;
     }
-    .register .hide{
+    .register.hide{
         display: none !important;
     }
     .update{
-        display: none !important;
+        width: 365px;
+        display: none;
     }
-
+    .update.visible{
+        display: initial !important;
+    }
     .register form {
         width: 100%;
     }

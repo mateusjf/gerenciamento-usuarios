@@ -44,7 +44,7 @@ class UserController{
                     dados.foto = resultado
                     this._view.adicionarLinha(dados)
                     this._view.resetFormulario()
-                    this.view.resetStyle()
+                    this._view.resetStyle()
                     this._view.btnSubmit.disabled = false
                 }).catch(e => {
                     console.log(e)

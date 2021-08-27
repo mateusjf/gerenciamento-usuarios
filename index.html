@@ -180,59 +180,60 @@
                             </fieldset>
                         </form>
 
-                        <div class="update">
-                            <h3>Novo Usuário</h3>
-                            <form action="post">
-                                <fieldset>
-                                    <legend>Dados</legend>
-                                    <div class="input-group">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" id="nome" placeholder="Digite seu nome">
-                                    </div>
-                                    <div class="input-group">
-                                        Sexo:
-        
-                                        <label for="sexo">
-                                            <input type="radio" value="masculino" name="sexo" checked>
-                                            Masculino
-                                        </label>
-        
-                                        <label for="sexo">
-                                            <input type="radio" value="feminino" name="sexo">
-                                            Feminino
-                                        </label>
-                                        
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="data-nascimento">Data de Nascimento</label>
-                                        <input type="date" id="data-nascimento" placeholder="dd/mm/aaaa">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="pais">País</label>
-                                        <input type="text" id="pais" placeholder="Digite seu país">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="email">E-mail</label>
-                                        <input type="email" id="email" placeholder="Digite seu e-mail">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="senha">Senha</label>
-                                        <input type="password" id="senha" placeholder="Digite sua senha">
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="img-profile">
-                                            <img src="" alt="">
-                                        </div>
-                                        <label for="foto" id="foto-description">Foto</label>
-                                        <input id="foto" type="file">
-                                    </div>
-                                    Administrador <input type="checkbox" name="admin" id="admin"> 
-                                    <button type="submit" id="btn-submit-update">Enviar</button>
-                                    <button id="btn-cancel-update">Cancel</button>
-                                </fieldset>
-                            </form>
                     </div>
-                </div>
+
+                    <div class="update">
+                        <h3>Editar Usuário</h3>
+                        <form action="post">
+                            <fieldset>
+                                <legend>Dados</legend>
+                                <div class="input-group">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" id="nome" placeholder="Digite seu nome">
+                                </div>
+                                <div class="input-group">
+                                    Sexo:
+    
+                                    <label for="sexo">
+                                        <input type="radio" value="masculino" name="sexo" checked>
+                                        Masculino
+                                    </label>
+    
+                                    <label for="sexo">
+                                        <input type="radio" value="feminino" name="sexo">
+                                        Feminino
+                                    </label>
+                                    
+                                </div>
+                                <div class="input-group">
+                                    <label for="data-nascimento">Data de Nascimento</label>
+                                    <input type="date" id="data-nascimento" placeholder="dd/mm/aaaa">
+                                </div>
+                                <div class="input-group">
+                                    <label for="pais">País</label>
+                                    <input type="text" id="pais" placeholder="Digite seu país">
+                                </div>
+                                <div class="input-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" id="email" placeholder="Digite seu e-mail">
+                                </div>
+                                <div class="input-group">
+                                    <label for="senha">Senha</label>
+                                    <input type="password" id="senha" placeholder="Digite sua senha">
+                                </div>
+                                <div class="input-group">
+                                    <div class="img-profile">
+                                        <img src="" alt="">
+                                    </div>
+                                    <label for="foto" id="foto-description">Foto</label>
+                                    <input id="foto" type="file">
+                                </div>
+                                Administrador <input type="checkbox" name="admin" id="admin"> 
+                                <button type="submit" id="btn-submit-update">Enviar</button>
+                                <button id="btn-cancel-update">Cancel</button>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
         </div>
     </main>
