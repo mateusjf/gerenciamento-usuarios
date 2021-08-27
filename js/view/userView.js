@@ -5,6 +5,10 @@ class UserView{
         this.tbody = document.querySelector('tbody')
         this.inputFile = document.querySelector('#foto');
         this.imgProfile = document.querySelector('.img-profile img')
+        this.settingsDisplay = document.querySelector('.settings')
+        this.tableDisplay = document.querySelector('.user')
+        this.formDisplay = document.querySelector('.register')
+        this.updateDisplay = document.querySelector('.update')
     }
 
     resetFormulario(){
@@ -74,9 +78,12 @@ class UserView{
         </td>
     </tr>`
 
+        tr.dataset.dataAtributos = JSON.stringify(dados)
+
         const btnEdit = tr.querySelector('button-edit');
         tr.addEventListener('click', () => {
-
+            this.updateDisplay.classList.remove('update')
+            this.registerDisplay.classList.add('hide')
         })
 
         this.tbody.appendChild(tr)

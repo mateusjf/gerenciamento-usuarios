@@ -16,6 +16,8 @@ class UserController{
 
     initEvents(){
         this.onSubmit()
+        this.onToggleDisplay()
+
         this._view.inputFile.addEventListener('change', ()=> {
             let foto = this._view.inputFile.files[0]
             this.getFoto(foto).
@@ -30,7 +32,6 @@ class UserController{
         this._view.form.addEventListener('submit', evento => {
             evento.preventDefault()
             if (this._view.validaFormulario()){
-                console.log(this)
                 this._view.btnSubmit.disabled = true
                 let dados = this._view.getDadosFormulario();
                 let fotoFile = [...this._view.form.elements].filter(item => {
@@ -39,7 +40,6 @@ class UserController{
                 })
 
                 fotoFile = fotoFile[0]
-                console.log(fotoFile.files[0])
                 this.getFoto(fotoFile.files[0]).then(resultado => {
                     dados.foto = resultado
                     this._view.adicionarLinha(dados)
@@ -59,6 +59,35 @@ class UserController{
 
     onDelete(){
 
+    }
+
+    onToggleDisplay(){
+        let buttons = this._view.settingsDisplay.querySelectorAll('a')
+        let icons = this._view.settingsDisplay.querySelectorAll('i')
+
+        buttons.forEach((btn, indice) => {
+
+            btn.addEventListener('click', (event) => {
+                event.preventDefault()
+                let indiceTroca = (indice === 0) ? 1 : 0
+                if(!btn.classList.contains('selected')){
+                    let aux = icons[indice].classList.value
+                    icons[indice].classList.value = icons[indiceTroca].classList.value
+                    icons[indiceTroca].classList.value = aux
+                    buttons[indiceTroca].classList.remove('selected')
+                    buttons[indice].classList.add('selected')
+        
+                    if (indice == 0){
+                        this._view.tableDisplay.style.display = 'initial'
+                        this._view.formDisplay.style.display = 'none'
+                        
+                    }else{
+                        this._view.tableDisplay.style.display = 'none'
+                        this._view.formDisplay.style.display = 'initial'
+                    }
+                }
+            })
+        })
     }
 
     getFoto(file){
