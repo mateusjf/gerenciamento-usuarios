@@ -175,6 +175,9 @@ form .input-group input:focus{
     color: var(--cards-color);
     font-size: 1.1em;
 }
+.button-disabled{
+    opacity: 0.3 !important;
+}
 @media screen and (min-width: 980px){
     .settings{
         display: none;

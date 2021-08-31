@@ -54,7 +54,7 @@ class UserController{
     }
 
     onUpdate(){
-
+        
     }
 
     onDelete(){

@@ -13,7 +13,7 @@ class UserView{
 
     resetFormulario(){
         this.form.reset()
-        this.imgProfile.src = ''
+        this.imgProfile.src = 'img/user.png'
     }
 
     resetStyle(){
@@ -56,12 +56,24 @@ class UserView{
         return ok
     }
 
-    toggleForm(){
-        //this.updateDisplay.classList.remove('update')
-        this.updateDisplay.classList.toggle('visible')
+    removeFormUpdate(){
+        this.updateDisplay.classList.remove('visible')
         let registerDisplay = document.querySelector('.register');
-        //registerDisplay.classList.remove('register')
-        registerDisplay.classList.toggle('hide')
+        registerDisplay.classList.remove('hide')
+    }
+
+    addFormUpdate(){
+        this.updateDisplay.classList.add('visible')
+        let registerDisplay = document.querySelector('.register');
+        registerDisplay.classList.add('hide')
+    }
+
+    resetFormUpdate(){
+        let form = this.updateDisplay.querySelector('form')
+        form.reset()
+
+        let img = form.querySelector('img')
+        img.src = 'img/user.png'
     }
 
     adicionarLinha(dados){
@@ -91,9 +103,16 @@ class UserView{
         const btnEdit = tr.querySelector('.button-edit')
 
         btnEdit.addEventListener('click', () => {
-            btnEdit.disabled = true
-            btnEdit.style.opacity = 0.3
-            this.toggleForm()
+            if (!btnEdit.classList.contains('button-disabled')){
+                this.resetFormUpdate()
+                let botaoAtivo = document.querySelector('.button-disabled')
+                if (botaoAtivo)
+                    botaoAtivo.classList.remove('button-disabled')
+
+                console.log(botaoAtivo)
+                btnEdit.classList.add('button-disabled')
+                this.addFormUpdate()
+            }
         })
 
         this.tbody.appendChild(tr)
