@@ -12,11 +12,11 @@ Templete baseado no AdminLTE para fazer gerenciamento de usuário
   
   <h3>Screenshot</h3>
     <h4 align="center">
-      <img alt="Pomodoro App" src="./img_readme/1.png" />
+      <img alt="Gerenciamento de Usuário" src="./img_readme/1.png" />
     </h4>
     <h4 align="center">
-      <img alt="Pomodoro App" src="./img_readme/2.png" />
+      <img alt="Gerenciamento de Usuário" src="./img_readme/2.png" />
     </h4>
     <h4 align="center">
-      <img alt="Pomodoro App" src="./img_readme/3.png" />
+      <img alt="Gerenciamento de Usuário" src="./img_readme/3.png" />
     </h4>
