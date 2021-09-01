@@ -9,6 +9,7 @@ class UserView{
         this.tableDisplay = document.querySelector('.user')
         this.formDisplay = document.querySelector('.register')
         this.updateDisplay = document.querySelector('.update')
+        this.currentRow = null
     }
 
     resetFormulario(){
@@ -23,14 +24,15 @@ class UserView{
         })
     }
 
-    getDadosFormulario(){
-        const obj = {};
-        [...this.form.elements].forEach(input => {
+    getDadosFormulario(form){
+        let
+         obj = {};
+        [...form.elements].forEach(input => {
             if (input.name === 'sexo'){
                 if (input.checked){
                     obj[input.name] = input.value
                 }
-            }else if (input.id === 'admin'){
+            }else if (input.name === 'admin'){
                 obj[input.name] = input.checked
             }else{
                 obj[input.id] = input.value
@@ -40,10 +42,10 @@ class UserView{
         return obj 
     }
 
-    validaFormulario(){
+    validaFormulario(form){
         let ok = true
         const REQUIRED = ['nome', 'data-nascimento', 'email', 'senha'];
-        [...this.form.elements].forEach(item => {
+        [...form.elements].forEach(item => {
             if (REQUIRED.indexOf(item.id) > -1){
                 if (!item.value){
                     const parent = item.parentElement
@@ -60,6 +62,8 @@ class UserView{
         this.updateDisplay.classList.remove('visible')
         let registerDisplay = document.querySelector('.register');
         registerDisplay.classList.remove('hide')
+        let botaoEdit = this.currentRow.querySelector('.button-disabled')
+        botaoEdit.classList.remove('button-disabled')
     }
 
     addFormUpdate(){
@@ -76,16 +80,34 @@ class UserView{
         img.src = 'img/user.png'
     }
 
-    adicionarLinha(dados){
-        const tr = document.createElement('tr');
+    formUpdateContent(dados){
+        let form = this.updateDisplay.querySelector('form');
+        [...form.elements].forEach(input => {
+            if(input.name === 'sexo'){
+                if (input.value === dados.sexo)
+                    input.checked = true
+            }else if(input.id === 'admin-update'){
+                input.checked = dados[input.name]
+            }else if(input.classList.contains('update-input')){
+                input.value = dados[input.id] 
+            }
+                
+        })
 
-        tr.innerHTML = `<tr>
+        let updateImgProfile = this.updateDisplay.querySelector('form img')
+        updateImgProfile.src = dados.foto
+    }
+
+    adicionarLinha(dados){
+        let tr = document.createElement('tr');
+
+        tr.innerHTML = `
         <td class="col-img">
             <div class="img-tabela">
                 <img src="${dados.foto}" alt="">
             </div>
         </td>
-        <td>${dados.nome}/td>
+        <td>${dados.nome}</td>
         <td>${dados.email}</td>
         <td>${(dados.admin) ? 'Sim' : 'Não'}</td>
         <td class="botoes">
@@ -95,12 +117,11 @@ class UserView{
             <button class="action-button button-delete">
                 <i class="far fa-trash-alt"></i>
             </button>
-        </td>
-    </tr>`
+        </td>`
 
-        tr.dataset.dataAtributos = JSON.stringify(dados)
+        tr.dataset.atributos = JSON.stringify(dados)
 
-        const btnEdit = tr.querySelector('.button-edit')
+        let btnEdit = tr.querySelector('.button-edit')
 
         btnEdit.addEventListener('click', () => {
             if (!btnEdit.classList.contains('button-disabled')){
@@ -109,9 +130,10 @@ class UserView{
                 if (botaoAtivo)
                     botaoAtivo.classList.remove('button-disabled')
 
-                console.log(botaoAtivo)
                 btnEdit.classList.add('button-disabled')
                 this.addFormUpdate()
+                this.formUpdateContent(JSON.parse(tr.dataset.atributos))
+                this.currentRow = tr
             }
         })
 

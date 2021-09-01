@@ -228,6 +228,16 @@ form .input-group input:focus{
     .register{
         display: none;
     }
+    .register.hide{
+        display: none !important;
+    }
+    .update{
+        width: 365px;
+        display: none;
+    }
+    .update.visible{
+        display: initial !important;
+    }
 }
 @media screen and (max-width: 580px){
     .cards{

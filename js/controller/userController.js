@@ -17,6 +17,8 @@ class UserController{
     initEvents(){
         this.onSubmit()
         this.onToggleDisplay()
+        this.onUpdate()
+        this.onCancelUpdate()
 
         this._view.inputFile.addEventListener('change', ()=> {
             let foto = this._view.inputFile.files[0]
@@ -26,14 +28,25 @@ class UserController{
             }).
             catch(e => console.log)
         })
+
+        let inputUpdatePicture = this._view.updateDisplay.querySelector('#foto-update')
+        inputUpdatePicture.addEventListener('change', ()=> {
+            let foto = inputUpdatePicture.files[0]
+            this.getFoto(foto).
+            then(resultado => {
+                let profile = this._view.updateDisplay.querySelector('img')
+                profile.src = resultado
+            }).
+            catch(e => console.log)
+        })
     }
 
     onSubmit(){
         this._view.form.addEventListener('submit', evento => {
             evento.preventDefault()
-            if (this._view.validaFormulario()){
+            if (this._view.validaFormulario(this._view.form)){
                 this._view.btnSubmit.disabled = true
-                let dados = this._view.getDadosFormulario();
+                let dados = this._view.getDadosFormulario(this._view.form);
                 let fotoFile = [...this._view.form.elements].filter(item => {
                     if (item.id === 'foto')
                         return item
@@ -54,12 +67,48 @@ class UserController{
     }
 
     onUpdate(){
-        
+        let formUpdate = this._view.updateDisplay.querySelector('form');
+        let img = formUpdate.querySelector('img')
+        formUpdate.addEventListener('submit', evento => {
+            evento.preventDefault()
+            if (this._view.validaFormulario(formUpdate)){
+                this._view.btnSubmit.disabled = true
+                let dados = this._view.getDadosFormulario(formUpdate);
+                let fotoFile = [...this._view.form.elements].filter(item => {
+                    if (item.id === 'foto')
+                        return item
+                })
+
+                fotoFile = fotoFile[0]
+                this.getFoto(fotoFile.files[0], img.src).then(resultado => {
+                    dados.foto = resultado
+                    this._view.adicionarLinha(dados)
+                    this._view.currentRow.remove()
+                    this._view.resetFormulario()
+                    this._view.resetStyle()
+                    this._view.btnSubmit.disabled = false
+                }).catch(e => {
+                    console.log(e)
+                })
+            }
+            this._view.resetFormUpdate()
+            this._view.removeFormUpdate()
+        })
+    }
+
+    onCancelUpdate(){
+        let buttonCancel = this._view.updateDisplay.querySelector('#btn-cancel-update')
+        buttonCancel.addEventListener('click', event => {
+            event.preventDefault()
+            this._view.resetFormulario()
+            this._view.removeFormUpdate()
+        })
     }
 
     onDelete(){
 
     }
+    
 
     onToggleDisplay(){
         let buttons = this._view.settingsDisplay.querySelectorAll('a')
@@ -78,11 +127,19 @@ class UserController{
                     buttons[indice].classList.add('selected')
         
                     if (indice == 0){
-                        this._view.tableDisplay.style.display = 'initial'
+                        if (this._view.formDisplay.classList.contains('hide'))
+                            this._view.updateDisplay.style.display = 'initial'
+                        else
+                            this._view.tableDisplay.style.display = 'initial'
+
                         this._view.formDisplay.style.display = 'none'
                         
                     }else{
-                        this._view.tableDisplay.style.display = 'none'
+                        if (!this._view.formDisplay.classList.contains('hide'))
+                            this._view.tableDisplay.style.display = 'none'
+                        else
+                            this._view.tableDisplay.style.display = 'none'
+                            
                         this._view.formDisplay.style.display = 'initial'
                     }
                 }
@@ -90,7 +147,7 @@ class UserController{
         })
     }
 
-    getFoto(file){
+    getFoto(file, padrao = 'img/user.png'){
         return new Promise((resolve, reject) => {
             let fileReader = new FileReader()
             
@@ -102,7 +159,8 @@ class UserController{
                 reject()
             }
             if (!file)
-                resolve('img/user.png')
+                resolve(padrao)
+            
 
             fileReader.readAsDataURL(file);
         })
