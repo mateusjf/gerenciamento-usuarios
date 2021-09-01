@@ -178,6 +178,10 @@ form .input-group input:focus{
 .button-disabled{
     opacity: 0.3 !important;
 }
+.update{
+    width: 365px;
+    display: none !important;
+}
 @media screen and (min-width: 980px){
     .settings{
         display: none;
@@ -200,7 +204,7 @@ form .input-group input:focus{
     }
     .update{
         width: 365px;
-        display: none;
+        display: none !important;
     }
     .update.visible{
         display: initial !important;
@@ -231,13 +235,7 @@ form .input-group input:focus{
     .register.hide{
         display: none !important;
     }
-    .update{
-        width: 365px;
-        display: none;
-    }
-    .update.visible{
-        display: initial !important;
-    }
+
 }
 @media screen and (max-width: 580px){
     .cards{

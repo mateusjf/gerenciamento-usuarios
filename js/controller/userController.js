@@ -127,20 +127,19 @@ class UserController{
                     buttons[indice].classList.add('selected')
         
                     if (indice == 0){
-                        if (this._view.formDisplay.classList.contains('hide'))
-                            this._view.updateDisplay.style.display = 'initial'
-                        else
-                            this._view.tableDisplay.style.display = 'initial'
-
+                        this._view.tableDisplay.style.display = 'initial'
                         this._view.formDisplay.style.display = 'none'
-                        
+                        this._view.updateDisplay.style.display = 'none'
+                        if (this._view.formDisplay.classList.contains('hide')){
+                            //this._view.updateDisplay.classList.remove('visible')
+                        }
                     }else{
-                        if (!this._view.formDisplay.classList.contains('hide'))
-                            this._view.tableDisplay.style.display = 'none'
-                        else
-                            this._view.tableDisplay.style.display = 'none'
-                            
+                        this._view.tableDisplay.style.display = 'none'
                         this._view.formDisplay.style.display = 'initial'
+                        if (this._view.formDisplay.classList.contains('hide')){
+                            console.log('dsfads')
+                           // this._view.updateDisplay.classList.add('visible')
+                        }
                     }
                 }
             })

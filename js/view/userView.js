@@ -9,6 +9,8 @@ class UserView{
         this.tableDisplay = document.querySelector('.user')
         this.formDisplay = document.querySelector('.register')
         this.updateDisplay = document.querySelector('.update')
+        this.cardAdmin = document.querySelector('#admin-number');
+        this.cardUser = document.querySelector('#user-number');
         this.currentRow = null
     }
 
@@ -98,6 +100,23 @@ class UserView{
         updateImgProfile.src = dados.foto
     }
 
+    updateCard(){
+        let tds = document.querySelectorAll('.td-admin')
+        let admin = 0
+        let user = 0
+
+        tds.forEach(td => {
+            if (td.innerText === 'Sim'){
+                admin++
+            }
+
+            user++
+        })
+
+        this.cardAdmin.innerText = admin
+        this.cardUser.innerText = user
+    }
+
     adicionarLinha(dados){
         let tr = document.createElement('tr');
 
@@ -109,7 +128,7 @@ class UserView{
         </td>
         <td>${dados.nome}</td>
         <td>${dados.email}</td>
-        <td>${(dados.admin) ? 'Sim' : 'Não'}</td>
+        <td class="td-admin">${(dados.admin) ? 'Sim' : 'Não'}</td>
         <td class="botoes">
             <button class="action-button button-edit">
                 <i class="far fa-edit"></i>
@@ -122,6 +141,7 @@ class UserView{
         tr.dataset.atributos = JSON.stringify(dados)
 
         let btnEdit = tr.querySelector('.button-edit')
+        let btnDelete = tr.querySelector('.button-delete')
 
         btnEdit.addEventListener('click', () => {
             if (!btnEdit.classList.contains('button-disabled')){
@@ -136,7 +156,13 @@ class UserView{
                 this.currentRow = tr
             }
         })
+        
+        btnDelete.addEventListener('click', () => {
+            this.updateCard()
+            tr.remove()
+        })
 
         this.tbody.appendChild(tr)
+        this.updateCard()
     }
 }
