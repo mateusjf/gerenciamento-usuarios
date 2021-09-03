@@ -104,12 +104,7 @@ class UserController{
             this._view.removeFormUpdate()
         })
     }
-
-    onDelete(){
-
-    }
     
-
     onToggleDisplay(){
         let buttons = this._view.settingsDisplay.querySelectorAll('a')
         let icons = this._view.settingsDisplay.querySelectorAll('i')
